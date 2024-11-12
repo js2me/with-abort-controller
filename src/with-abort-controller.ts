@@ -7,7 +7,9 @@ export class WithAbortController {
     this.abortSignal = this.abortController.signal;
 
     if (abortSignal) {
-      abortSignal.addEventListener('abort', () => this.abortController.abort());
+      abortSignal.addEventListener('abort', () =>
+        this.abortController.abort(abortSignal.reason),
+      );
     }
   }
 }
